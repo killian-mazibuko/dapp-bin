@@ -1,8 +1,9 @@
+pragma solidity ^0.4.26;
 library StringUtils {
     /// @dev Does a byte-by-byte lexicographical comparison of two strings.
     /// @return a negative number if `_a` is smaller, zero if they are equal
     /// and a positive numbe if `_b` is smaller.
-    function compare(string _a, string _b) returns (int) {
+    function compare(string _a, string _b) returns (int) public {
         bytes memory a = bytes(_a);
         bytes memory b = bytes(_b);
         uint minLength = a.length;
@@ -21,12 +22,11 @@ library StringUtils {
             return 0;
     }
     /// @dev Compares two strings and returns true iff they are equal.
-    function equal(string _a, string _b) returns (bool) {
+    function equal(string _a, string _b) returns (bool) public {
         return compare(_a, _b) == 0;
     }
     /// @dev Finds the index of the first occurrence of _needle in _haystack
-    function indexOf(string _haystack, string _needle) returns (int)
-    {
+    function indexOf(string _haystack, string _needle) returns (int) public {
     	bytes memory h = bytes(_haystack);
     	bytes memory n = bytes(_needle);
     	if(h.length < 1 || n.length < 1 || (n.length > h.length)) 
